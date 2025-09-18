@@ -18,7 +18,7 @@ Installation
 
 Clone the repository:
 
-git clone https://github.com/shirshadip/qr-code-generator.git
+git clone https://github.com/shirshadip/qr_code_maker.git
 cd qr-code-generator
 
 
