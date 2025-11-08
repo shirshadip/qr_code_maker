@@ -25,6 +25,8 @@ cd qr-code-generator
 Install the required package:
 
 pip install qrcode[pil]
+or ,
+<strong>run ./download.bat in terminal or double click on the file </strong>
 
 Usage
 
