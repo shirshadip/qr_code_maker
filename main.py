@@ -34,4 +34,3 @@ try:
         print ("choose a valid option")
 except ModuleNotFoundError:
     print("qr code module is not found, please run the download.bat file ")
-
