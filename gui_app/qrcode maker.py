@@ -1,5 +1,5 @@
 """
-pyinstaller "d:\repositories\qr_code_maker\gui_app\qrcode maker.spec"
+D:\repositories\qr_code_maker\gui_app> pyinstaller --onefile --windowed --icon=icon.ico "qrcode maker.py"
 
 
 command to update exe 
@@ -7,6 +7,9 @@ command to update exe
 
 """
 
+import os
+
+os.makedirs(r"D:\repositories\qr_code_maker\qr_codes", exist_ok=True)
 
 
 import tkinter as tk
