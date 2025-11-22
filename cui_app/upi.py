@@ -1,5 +1,8 @@
 def upi ():
     import qrcode as qr 
+    import datetime
+    import os 
+    now = datetime.datetime.now()
     #upi payment info 
     upi_id = input("enter your upi id(eg. yourupiid@bank):") #your upi id 
     name = input("enter your name:") #your name
@@ -11,6 +14,9 @@ def upi ():
 
     #generate qr
     qr = qr.make(upi_link)
-    qr.save(f"{name}.png")
+    save=r"D:\repositories\qr_code_maker\qr_codes"
+    file_path = os.path.join(save,f"{now}.png")
+    qr.save(file_path)
+    
 
     print ("upi qr code generated succesfully")

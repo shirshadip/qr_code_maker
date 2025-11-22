@@ -9,6 +9,9 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import qrcode
+import datetime
+now = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+import os 
 
 
 def txt_gui():
@@ -21,8 +24,10 @@ def txt_gui():
 
         try:
             img = qrcode.make(data)
-            img.save(f"{data}.png")
-            messagebox.showinfo("Success", f"QR code saved as {data}.png")
+            save=r"D:\repositories\qr_code_maker\qr_codes"
+            file_path = os.path.join(save,f"{now}.png")
+            img.save(file_path)
+            messagebox.showinfo("Success", f"QR code saved as {now}.png at : {file_path}")
         except Exception as e:
             messagebox.showerror("Error", f"Failed to create QR code:\n{e}")
 

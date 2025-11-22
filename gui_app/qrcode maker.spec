@@ -5,7 +5,7 @@ a = Analysis(
     ['qrcode maker.py'],
     pathex=[],
     binaries=[],
-    datas=[('icon.ico', '.')],
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='D:\\repositories\\qr_code_maker\\gui_app\\icon.ico',
+    icon=['icon.ico'],
 )
