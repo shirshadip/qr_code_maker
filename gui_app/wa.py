@@ -17,7 +17,7 @@ def txt_gui():
 
         try:
             img = qrcode.make(link)
-            save=r"D:/repositories/qr_code_maker/qr_codes"
+            save=r"D:\qr_code_maker\qr_codes"
             file_path = os.path.join(save,f"{now}.png")
             img.save(file_path)
             messagebox.showinfo("Success", f"QR code saved as {now}.png at :{file_path}")
