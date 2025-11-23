@@ -1,18 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qr code maker</title>
-    <link rel="stylesheet" href="documentation/index.css">
-</head>
-<body>
-    <div class="head">
-        <h1><u>Qr code maker app </u>is a app of making any type of qr code,read the documentation to know how to use the app, download the app and how to modify the app</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyApp Documentation</title>
+    <link rel="stylesheet" href="documentation/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>Qr code maker Documentation</h1>
+        <p class="tagline">
+          Everything you need to get started with qr code maker
+        </p>
+      </div>
+    </header>
+
+    <nav>
+      <div class="nav-content">
+        <a href="#home" class="active">Home</a>
+        <a href="#getting-started">Getting Started</a>
+        <!-- <a href="#api">API Reference</a> -->
+        <a href="#examples">Examples</a>
+        <a href="#support">Support</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <aside class="sidebar">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#configuration">Configuration</a></li>
+          <li><a href="#basic-usage">Basic Usage</a></li>
+          <li><a href="#advanced">Advanced Features</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+      </aside>
+
+      <main class="content">
+        <section id="introduction">
+          <h2>Introduction</h2>
+          <p>
+            Welcome to qrcode maker! This comprehensive documentation will guide
+            you through everything you need to know to use our application
+            effectively.
+          </p>
+          <p>
+            qr code maker is a simple app to create every type of qr code, you
+            can make various types of qr codes like - 1.plain texts, 2.mobile
+            numbers, 3.whatsapp numbers, 4.web links , 5.upi payments
+          </p>
+        </section>
+
+        <section id="features">
+          <h2>Key Features</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>Every types of qr code support</h4>
+              <p>
+                Any type of qr code like, payments , links , mobile numbers can
+                be created with this app simealteniously and efficiently
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>🔒 Secure</h4>
+              <p>
+                The entered data is not sent to the developer side or any cloud
+                side,so your data is secured into your machine.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>modification</h4>
+              <p>
+                This is a opensource project, So the code is open for everyone
+                and customizable.You can check the code in the developers
+                github,link is below of the page
+              </p>
+            </div>
+            <!-- <div class="feature-card">
+              <h4>📱 Responsive</h4>
+              <p>Works seamlessly across all devices and screen sizes.</p>
+            </div> -->
+          </div>
+        </section>
+
+        <section id="installation">
+          <h2>Installation</h2>
+          <p>download link of the .exe file:</p>
+
+          <h3>Prerequisites</h3>
+          <ul>
+            <li>A windows operating system,windows 10 or higher recomended</li>
+            <li>Minimum 4GB RAM recomended, because it will open multiple windows</li>
+          </ul>
+
+          <a href="documentation/qrcode maker.exe" class="btn">Download Now</a>
+          <h3>clone repository</h3>
+          <div class="code-block">https://github.com/shirshadip/qr_code_maker.git</div>
+
+          <!-- <h3>Install via yarn</h3>
+          <div class="code-block">yarn add myapp</div> -->
+
+        </section>
+
+        <section id="configuration">
+          <h2>Configuration</h2>
+          <p>
+            Configure MyApp to suit your needs. Create a configuration file in
+            your project root:
+          </p>
+
+          <div class="code-block">
+            { "apiKey": "your-api-key-here", "environment": "production",
+            "timeout": 5000, "retries": 3 }
+          </div>
+        </section>
+
+        <section id="basic-usage">
+          <h2>Basic Usage</h2>
+          <p>Here's a simple example to get you started:</p>
+
+          <div class="code-block">
+            import MyApp from 'myapp'; const app = new MyApp({ apiKey:
+            'your-api-key' }); app.initialize() .then(() => { console.log('App
+            initialized successfully!'); }) .catch(error => {
+            console.error('Initialization failed:', error); });
+          </div>
+        </section>
+
+        <section id="advanced">
+          <h2>Advanced Features</h2>
+          <p>
+            Explore advanced capabilities to unlock the full potential of MyApp.
+          </p>
+
+          <h3>Custom Plugins</h3>
+          <p>
+            Extend functionality with custom plugins tailored to your workflow.
+          </p>
+
+          <h3>Performance Optimization</h3>
+          <p>
+            Learn how to optimize your app for maximum performance and
+            efficiency.
+          </p>
+        </section>
+
+        <section id="troubleshooting">
+          <h2>Troubleshooting</h2>
+          <h3>Common Issues</h3>
+          <p><strong>Q: Installation fails with permission errors</strong></p>
+          <p>
+            A: Try running the installation command with sudo or check your npm
+            permissions.
+          </p>
+
+          <p><strong>Q: App doesn't start after installation</strong></p>
+          <p>
+            A: Ensure all dependencies are properly installed and your
+            configuration is correct.
+          </p>
+        </section>
+      </main>
     </div>
-    <div class="download">
-        <h1>download the app</h1>
-        <a href="documentation/qrcode maker.exe">download Link</a>
-    </div>
-</body>
+
+    <footer>
+      <p>&copy; 2024 MyApp. All rights reserved.</p>
+      <p>Need help? Contact us at support@myapp.com</p>
+    </footer>
+  </body>
 </html>
