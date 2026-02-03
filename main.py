@@ -1,8 +1,11 @@
 """
 QR Code Maker - Professional Desktop Application
-Build command: pyinstaller --onefile --windowed --icon=icon.ico qrcode_maker.py
+Build command: pyinstaller --onefile --windowed --icon=icon.ico --name QrcodeMaker main.py
+pyinstaller --onefile --windowed --icon=icon.ico --add-data "icon.ico;." --add-data "logo.png;." --name QrcodeMaker main.py
 """
 
+import os
+import sys
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 from PIL import Image, ImageTk
@@ -417,7 +420,13 @@ class QRCodeMakerApp:
         if self.qr_pil_image:
             # Resize for display
             display_size = (350, 350)
-            img_resized = self.qr_pil_image.resize(display_size, Image.Resampling.LANCZOS)
+            # Backwards-compatible resampling attribute
+            try:
+                resample_filter = Image.Resampling.LANCZOS
+            except Exception:
+                resample_filter = Image.LANCZOS
+
+            img_resized = self.qr_pil_image.resize(display_size, resample_filter)
 
             # Convert to PhotoImage
             self.qr_image = ImageTk.PhotoImage(img_resized)
@@ -572,8 +581,47 @@ Made with ❤️
 def main():
     root = tk.Tk()
     app = QRCodeMakerApp(root)
-    root.mainloop()
+    # Ensure icon is shown in titlebar and taskbar (generate .ico if missing)
+    def ensure_app_icon(win):
+        # When running from a PyInstaller bundle, resources are extracted to _MEIPASS
+        base_dir = getattr(sys, '_MEIPASS', os.path.dirname(__file__))
+        png_path = os.path.join(base_dir, "logo.png")
+        ico_path = os.path.join(base_dir, "icon.ico")
 
+        try:
+            # If .ico missing but logo.png exists, create a multi-size ICO
+            if not os.path.exists(ico_path) and os.path.exists(png_path):
+                try:
+                    img = Image.open(png_path)
+                    sizes = [(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)]
+                    img.save(ico_path, format='ICO', sizes=sizes)
+                except Exception:
+                    # ignore failures to auto-generate
+                    pass
+
+            # Set the Tk titlebar icon from PNG (keeps image in memory)
+            if os.path.exists(png_path):
+                try:
+                    photo = tk.PhotoImage(file=png_path)
+                    win.iconphoto(True, photo)
+                    # keep reference to avoid GC
+                    win._icon_photo = photo
+                except Exception:
+                    pass
+
+            # On Windows also set iconbitmap to the .ico (helps taskbar for packaged exe)
+            if os.name == 'nt' and os.path.exists(ico_path):
+                try:
+                    win.iconbitmap(ico_path)
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    ensure_app_icon(root)
+    root.mainloop()
+    
+    
 
 if __name__ == "__main__":
     main()
