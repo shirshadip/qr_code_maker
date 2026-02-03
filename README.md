@@ -1,6 +1,6 @@
 QR Code Generator
 
-## Official Website: <a href="https://shirshadip.github.io/qr_code_maker/" target="_blank">https://qr</a>
+<a href="https://qrcodemaker-opal.vercel.app/" target="_blank"> Official Website </a>
 
 A simple Python QR Code Generator that can create different types of QR codes, such as text, phone numbers, WhatsApp chat links, website URLs, and UPI payment codes.
 
