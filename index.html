@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qrcode maker</title>
-    <link rel="stylesheet" href="documentation/index.css" />
+    <title>QR Code Maker - Documentation</title>
+    <link rel="stylesheet" href="documentation/index.css">
   </head>
+
   <body>
     <header>
       <div class="header-content">
-        <h1>Qr code maker Documentation</h1>
+        <h1>🔲 QR Code Maker Documentation</h1>
         <p class="tagline">
-          Everything you need to get started with qr code maker
+          Everything you need to create professional QR codes
         </p>
       </div>
     </header>
@@ -20,167 +22,682 @@
       <div class="nav-content">
         <a href="#home" class="active">Home</a>
         <a href="#getting-started">Getting Started</a>
-        <!-- <a href="#api">API Reference</a> -->
-        <a href="#examples">Examples</a>
+        <a href="#features">Features</a>
+        <a href="#usage">Usage Guide</a>
         <a href="#support">Support</a>
       </div>
     </nav>
 
     <div class="container">
       <aside class="sidebar">
-        <h3>Quick Links</h3>
+        <h3>Quick Navigation</h3>
         <ul>
           <li><a href="#introduction">Introduction</a></li>
           <li><a href="#installation">Installation</a></li>
-          <li><a href="#configuration">Configuration</a></li>
+          <li><a href="#system-requirements">System Requirements</a></li>
+          <li><a href="#key-features">Key Features</a></li>
+          <li><a href="#qr-types">QR Code Types</a></li>
+          <li><a href="#user-interface">User Interface</a></li>
           <li><a href="#basic-usage">Basic Usage</a></li>
-          <li><a href="#advanced">Advanced Features</a></li>
+          <li><a href="#menu-options">Menu Options</a></li>
+          <li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
           <li><a href="#troubleshooting">Troubleshooting</a></li>
+          <li><a href="#source-code">Source Code</a></li>
         </ul>
       </aside>
 
       <main class="content">
         <section id="introduction">
-          <h2>Introduction</h2>
+          <h2>📖 Introduction</h2>
           <p>
-            Welcome to qrcode maker! This comprehensive documentation will guide
-            you through everything you need to know to use our application
-            effectively.
+            Welcome to <strong>QR Code Maker</strong> - a professional, user-friendly desktop application
+            for creating various types of QR codes. Built with Python and Tkinter, this application
+            provides an intuitive interface for generating QR codes for different purposes.
           </p>
           <p>
-            qr code maker is a simple app to create every type of qr code, you
-            can make various types of qr codes like - 1.plain texts, 2.mobile
-            numbers, 3.whatsapp numbers, 4.web links , 5.upi payments
+            QR Code Maker is designed to be simple yet powerful, allowing you to create QR codes
+            for plain text, phone numbers, WhatsApp, web links, and UPI payments - all in one
+            integrated application with no need for multiple windows or external tools.
           </p>
-        </section>
 
-        <section id="features">
-          <h2>Key Features</h2>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <h4>Every types of qr code support</h4>
-              <p>
-                Any type of qr code like, payments , links , mobile numbers can
-                be created with this app simealteniously and efficiently
-              </p>
-            </div>
-            <div class="feature-card">
-              <h4>🔒 Secure</h4>
-              <p>
-                The entered data is not sent to the developer side or any cloud
-                side,so your data is secured into your machine.
-              </p>
-            </div>
-            <div class="feature-card">
-              <h4>modification</h4>
-              <p>
-                This is a opensource project, So the code is open for everyone
-                and customizable.You can check the code in the developers
-                github,link is below of the page
-              </p>
-            </div>
-            <!-- <div class="feature-card">
-              <h4>📱 Responsive</h4>
-              <p>Works seamlessly across all devices and screen sizes.</p>
-            </div> -->
+          <div class="success-box">
+            <strong>✨ What's New in Version 2.0:</strong>
+            <ul style="margin-top: 0.5rem; margin-bottom: 0;">
+              <li>Single-window integrated interface</li>
+              <li>Live QR code preview</li>
+              <li>Professional menu bar with keyboard shortcuts</li>
+              <li>Improved modern design</li>
+              <li>Better user experience</li>
+            </ul>
           </div>
         </section>
 
         <section id="installation">
-          <h2>Installation</h2>
-          <p>download link of the .exe file:</p>
+          <h2>💾 Installation</h2>
 
-          <h3>Prerequisites</h3>
+          <h3>Option 1: Download Executable (Recommended for Windows Users)</h3>
+          <p>
+            The easiest way to get started is to download the pre-built executable file:
+          </p>
+          <a href="#" class="btn">📥 Download QR Code Maker.exe</a>
+
+          <div class="info-box">
+            <strong>ℹ️ Note:</strong> The executable is a standalone file - no installation required!
+            Just download and run. Windows Defender might show a warning for unsigned applications;
+            this is normal for new executables.
+          </div>
+
+          <h3>Option 2: Run from Source Code</h3>
+          <p>If you want to run from source or customize the application:</p>
+
+          <h4>1. Clone the Repository</h4>
+          <div class="code-block">git clone https://github.com/shirshadip/qr_code_maker.git
+            cd qr_code_maker</div>
+
+          <h4>2. Install Dependencies</h4>
+          <div class="code-block">pip install pillow qrcode pywin32</div>
+
+          <h4>3. Run the Application</h4>
+          <div class="code-block">python qrcode_maker.py</div>
+
+          <h3>Option 3: Build Your Own Executable</h3>
+          <p>To create your own executable file:</p>
+          <div class="code-block">pip install pyinstaller
+            pyinstaller --onefile --windowed --icon=icon.ico qrcode_maker.py</div>
+          <p>The executable will be created in the <code>dist</code> folder.</p>
+        </section>
+
+        <section id="system-requirements">
+          <h2>💻 System Requirements</h2>
+
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Requirement</th>
+            </tr>
+            <tr>
+              <td>Operating System</td>
+              <td>Windows 10 or higher (recommended)</td>
+            </tr>
+            <tr>
+              <td>RAM</td>
+              <td>Minimum 2GB (4GB recommended)</td>
+            </tr>
+            <tr>
+              <td>Disk Space</td>
+              <td>50MB free space</td>
+            </tr>
+            <tr>
+              <td>Display</td>
+              <td>1024x768 minimum resolution</td>
+            </tr>
+            <tr>
+              <td>Python Version (for source)</td>
+              <td>Python 3.8 or higher</td>
+            </tr>
+          </table>
+
+          <div class="info-box">
+            <strong>💡 Pro Tip:</strong> The new version uses significantly less RAM than the old
+            multi-window version since everything runs in a single integrated interface!
+          </div>
+        </section>
+
+        <section id="key-features">
+          <h2>✨ Key Features</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4>🎯 5 QR Code Types</h4>
+              <p>
+                Create QR codes for plain text, phone numbers, WhatsApp, web links,
+                and UPI payments - all from one interface.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>👁️ Live Preview</h4>
+              <p>
+                See your QR code instantly as you generate it. No need to save
+                first to see the result!
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>🔒 Privacy First</h4>
+              <p>
+                All data processing happens locally on your machine. Nothing is
+                sent to any server or cloud service.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>💾 Multiple Save Options</h4>
+              <p>
+                Save as PNG or JPEG, copy to clipboard, or open existing QR code
+                images for reference.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>⌨️ Keyboard Shortcuts</h4>
+              <p>
+                Work faster with keyboard shortcuts for common actions like
+                generate, save, and clear.
+              </p>
+            </div>
+            <div class="feature-card">
+              <h4>🎨 Modern UI</h4>
+              <p>
+                Clean, professional interface with intuitive controls and
+                responsive design elements.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="qr-types">
+          <h2>📱 QR Code Types</h2>
+
+          <h3>1. 📄 Plain Text / Numbers</h3>
+          <p>
+            Create QR codes containing any text or numbers. Perfect for:
+          </p>
           <ul>
-            <li>A windows operating system,windows 10 or higher recomended</li>
-            <li>Minimum 4GB RAM recomended, because it will open multiple windows</li>
+            <li>Contact information</li>
+            <li>Serial numbers</li>
+            <li>Product codes</li>
+            <li>Messages or notes</li>
+            <li>Any custom text content</li>
           </ul>
 
-          
-
-          <a href="gui_app/dist/qrcode maker.exe" class="btn">Download Now</a>
-<br><br>
-          <h2>Source codes</h2>
-
-
-          <h3>clone repository from https://</h3>
-          <div class="code-block">https://github.com/shirshadip/qr_code_maker.git</div>
-
-          <h3>clone repository from github CLI</h3>
-          <div class="code-block">gh repo clone shirshadip/qr_code_maker</div>
-
-        </section>
-
-        <section id="configuration">
-          <h2>Configuration</h2>
+          <h3>2. 📱 Mobile Number</h3>
           <p>
-            qrcode maker app is made on the programming language python,
-            created on a windows enviroment, to a CUI project to a GUI app.
-            the used components of the app
+            Generate QR codes that automatically dial a phone number when scanned. Features:
           </p>
+          <ul>
+            <li>Country code support (default: +91 for India)</li>
+            <li>Automatic tel: URL formatting</li>
+            <li>One-tap calling from smartphones</li>
+          </ul>
 
-          <div class="code-block">
-            1.python 3.14 <br>
-            2.tkinter Library for creating graphical components <br>
-            3.os module to configure the path of the saved qr code <br>
-            4.datetime  module to create a unique file name <br>
-            5.qrcode library to make qr code <br>
-            6.pyinstaller Library to make executables of the project
+          <h3>3. 💬 WhatsApp</h3>
+          <p>
+            Create QR codes that open WhatsApp chats. Includes:
+          </p>
+          <ul>
+            <li>Country code + phone number</li>
+            <li>Optional pre-filled message</li>
+            <li>Direct link to WhatsApp chat</li>
+            <li>Works on both mobile and WhatsApp Web</li>
+          </ul>
 
+          <h3>4. 🔗 Web Link</h3>
+          <p>
+            Generate QR codes for any website or URL:
+          </p>
+          <ul>
+            <li>Full URL support (http/https)</li>
+            <li>Social media profiles</li>
+            <li>Online forms</li>
+            <li>Download links</li>
+          </ul>
+
+          <h3>5. 💰 UPI Payment</h3>
+          <p>
+            Create UPI payment QR codes for Indian digital payments:
+          </p>
+          <ul>
+            <li>UPI ID (required)</li>
+            <li>Payee name (required)</li>
+            <li>Amount (optional)</li>
+            <li>Transaction note (optional)</li>
+            <li>Compatible with all UPI apps (GPay, PhonePe, Paytm, etc.)</li>
+          </ul>
+
+          <div class="warning-box">
+            <strong>⚠️ Important:</strong> Always verify your UPI payment details before generating
+            the QR code. Double-check the UPI ID and payee name to avoid payment errors.
           </div>
         </section>
 
-        <!-- <section id="basic-usage">
-          <h2>Basic Usage</h2>
-          <p>Here's a simple example to get you started:</p>
+        <section id="user-interface">
+          <h2>🖥️ User Interface Guide</h2>
 
-          <div class="code-block">
-            import MyApp from 'myapp'; const app = new MyApp({ apiKey:
-            'your-api-key' }); app.initialize() .then(() => { console.log('App
-            initialized successfully!'); }) .catch(error => {
-            console.error('Initialization failed:', error); });
+          <h3>Application Layout</h3>
+          <p>The application features a clean two-panel design:</p>
+
+          <h4>Left Panel - Input Area</h4>
+          <ul>
+            <li><strong>QR Code Type Selection:</strong> Radio buttons to choose the type of QR code</li>
+            <li><strong>Input Fields:</strong> Dynamic fields that change based on selected type</li>
+            <li><strong>Generate Button:</strong> Large blue button to create the QR code</li>
+          </ul>
+
+          <h4>Right Panel - Preview & Actions</h4>
+          <ul>
+            <li><strong>QR Code Display:</strong> Live preview of your generated QR code (350x350px)</li>
+            <li><strong>Action Buttons:</strong>
+              <ul>
+                <li>💾 Save - Save QR code as image file</li>
+                <li>📋 Copy - Copy to clipboard</li>
+                <li>🗑️ Clear - Reset and start new</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h3>Menu Bar</h3>
+          <p>Traditional Windows-style menu with four sections:</p>
+
+          <h4>File Menu</h4>
+          <ul>
+            <li>New QR Code - Clear everything and start fresh</li>
+            <li>Open Image - Load existing QR code image</li>
+            <li>Save QR Code - Quick save</li>
+            <li>Save As - Save with custom name/location</li>
+            <li>Exit - Close the application</li>
+          </ul>
+
+          <h4>Edit Menu</h4>
+          <ul>
+            <li>Clear All - Reset all inputs</li>
+            <li>Copy QR Code - Copy to clipboard</li>
+            <li>Preferences - App settings (coming soon)</li>
+          </ul>
+
+          <h4>Generate Menu</h4>
+          <ul>
+            <li>Generate QR Code - Create QR code</li>
+            <li>Regenerate - Recreate with current settings</li>
+          </ul>
+
+          <h4>Help Menu</h4>
+          <ul>
+            <li>How to Use - Quick help guide</li>
+            <li>About - App information</li>
+          </ul>
+        </section>
+
+        <section id="basic-usage">
+          <h2>📚 Basic Usage Guide</h2>
+
+          <h3>Creating Your First QR Code</h3>
+          <ol>
+            <li><strong>Launch the Application</strong>
+              <p>Double-click the QR Code Maker executable or run the Python script.</p>
+            </li>
+
+            <li><strong>Select QR Code Type</strong>
+              <p>Click one of the radio buttons in the "QR Code Type" section to choose what
+                type of QR code you want to create.</p>
+            </li>
+
+            <li><strong>Fill in the Details</strong>
+              <p>The input fields will automatically update based on your selection.
+                Enter the required information.</p>
+            </li>
+
+            <li><strong>Generate the QR Code</strong>
+              <p>Click the "🔲 Generate QR Code" button or press <span class="keyboard-shortcut">Ctrl+G</span>.</p>
+            </li>
+
+            <li><strong>Preview and Save</strong>
+              <p>Your QR code will appear in the right panel. You can now save it or copy it.</p>
+            </li>
+          </ol>
+
+          <h3>Example: Creating a WhatsApp QR Code</h3>
+          <div class="code-block">1. Select "💬 WhatsApp" from QR Code Type
+            2. Enter Country Code: +91
+            3. Enter WhatsApp Number: 9876543210
+            4. (Optional) Enter Message: "Hello! I scanned your QR code"
+            5. Click "Generate QR Code"
+            6. Click "Save" to save the QR code</div>
+
+          <h3>Example: Creating a UPI Payment QR Code</h3>
+          <div class="code-block">1. Select "💰 UPI Payment" from QR Code Type
+            2. Enter UPI ID: yourname@paytm
+            3. Enter Payee Name: Your Name
+            4. Enter Amount: 500 (optional)
+            5. Enter Note: "Payment for services" (optional)
+            6. Click "Generate QR Code"
+            7. Click "Save" to save the QR code</div>
+
+          <div class="success-box">
+            <strong>✅ Pro Tip:</strong> You can regenerate the same QR code with different
+            settings by pressing <span class="keyboard-shortcut">F5</span> after making changes.
           </div>
         </section>
 
-        <section id="advanced">
-          <h2>Advanced Features</h2>
+        <section id="menu-options">
+          <h2>📋 Menu Options Explained</h2>
+
+          <h3>Saving QR Codes</h3>
+          <p><strong>Save vs Save As:</strong></p>
+          <ul>
+            <li><strong>Save (Ctrl+S):</strong> Opens file dialog to choose location and format</li>
+            <li><strong>Save As (Ctrl+Shift+S):</strong> Same as Save, allows custom naming</li>
+            <li>Supported formats: PNG (recommended) and JPEG</li>
+          </ul>
+
+          <h3>Opening Existing Images</h3>
           <p>
-            Explore advanced capabilities to unlock the full potential of MyApp.
+            Use <strong>File → Open Image</strong> to load existing QR code images into the preview
+            panel. This is useful for:
+          </p>
+          <ul>
+            <li>Viewing previously created QR codes</li>
+            <li>Comparing different QR codes</li>
+            <li>Reference or verification</li>
+          </ul>
+
+          <h3>Copying to Clipboard</h3>
+          <p>
+            The <strong>Copy</strong> function allows you to paste the QR code directly into other
+            applications like Word, PowerPoint, or image editors.
           </p>
 
-          <h3>Custom Plugins</h3>
-          <p>
-            Extend functionality with custom plugins tailored to your workflow.
-          </p>
+          <div class="info-box">
+            <strong>ℹ️ Note:</strong> Clipboard functionality requires the pywin32 package.
+            If you encounter errors, ensure pywin32 is installed: <code>pip install pywin32</code>
+          </div>
+        </section>
 
-          <h3>Performance Optimization</h3>
-          <p>
-            Learn how to optimize your app for maximum performance and
-            efficiency.
-          </p>
+        <section id="keyboard-shortcuts">
+          <h2>⌨️ Keyboard Shortcuts</h2>
+
+          <table>
+            <tr>
+              <th>Shortcut</th>
+              <th>Action</th>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">Ctrl + N</span></td>
+              <td>New QR Code (clear all)</td>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">Ctrl + O</span></td>
+              <td>Open Image</td>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">Ctrl + S</span></td>
+              <td>Save QR Code</td>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">Ctrl + Shift + S</span></td>
+              <td>Save As</td>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">Ctrl + L</span></td>
+              <td>Clear All</td>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">Ctrl + C</span></td>
+              <td>Copy QR Code</td>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">Ctrl + G</span></td>
+              <td>Generate QR Code</td>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">F5</span></td>
+              <td>Regenerate</td>
+            </tr>
+            <tr>
+              <td><span class="keyboard-shortcut">Alt + F4</span></td>
+              <td>Exit Application</td>
+            </tr>
+          </table>
+
+          <div class="success-box">
+            <strong>💡 Power User Tip:</strong> Use keyboard shortcuts to speed up your workflow!
+            The most common workflow is: Fill inputs → <span class="keyboard-shortcut">Ctrl+G</span> →
+            <span class="keyboard-shortcut">Ctrl+S</span> → Done!
+          </div>
         </section>
 
         <section id="troubleshooting">
-          <h2>Troubleshooting</h2>
-          <h3>Common Issues</h3>
-          <p><strong>Q: Installation fails with permission errors</strong></p>
+          <h2>🔧 Troubleshooting</h2>
+
+          <h3>Common Issues and Solutions</h3>
+
+          <h4>Q: Application won't start / Shows error on launch</h4>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Ensure you're running Windows 10 or higher</li>
+            <li>Try running as Administrator (right-click → Run as administrator)</li>
+            <li>Check if antivirus is blocking the application</li>
+            <li>If running from source, verify all dependencies are installed</li>
+          </ul>
+
+          <h4>Q: "Input Required" error when generating QR code</h4>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Make sure all required fields are filled</li>
+            <li>For UPI: UPI ID and Payee Name are mandatory</li>
+            <li>For WhatsApp/Phone: Number field cannot be empty</li>
+            <li>For Link: URL must not be just "https://"</li>
+          </ul>
+
+          <h4>Q: Generated QR code doesn't scan properly</h4>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Ensure the data entered is correct and properly formatted</li>
+            <li>Check that special characters are entered correctly</li>
+            <li>For UPI: Verify UPI ID format (name@bank)</li>
+            <li>Try generating the QR code again</li>
+            <li>Ensure good contrast when printing (black on white works best)</li>
+          </ul>
+
+          <h4>Q: Copy to clipboard doesn't work</h4>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Install pywin32: <code>pip install pywin32</code></li>
+            <li>Close other clipboard managers if running</li>
+            <li>Use the Save function as an alternative</li>
+          </ul>
+
+          <h4>Q: Can't save QR code / Permission denied error</h4>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>Choose a different save location (like Desktop or Documents)</li>
+            <li>Check folder permissions</li>
+            <li>Run application as Administrator if needed</li>
+          </ul>
+
+          <h4>Q: QR code appears blurry or pixelated</h4>
+          <p><strong>Solution:</strong></p>
+          <ul>
+            <li>The saved QR code is high resolution even if preview looks small</li>
+            <li>Save as PNG for best quality (not JPEG)</li>
+            <li>The QR code is vector-based and scales well when printed</li>
+          </ul>
+
+          <div class="warning-box">
+            <strong>⚠️ Still Having Issues?</strong><br>
+            If you continue to experience problems, please contact support with:
+            <ul style="margin-top: 0.5rem; margin-bottom: 0;">
+              <li>Your Windows version</li>
+              <li>Error message (if any)</li>
+              <li>Steps to reproduce the issue</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="source-code">
+          <h2>💻 Source Code & Development</h2>
+
+          <h3>Technology Stack</h3>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technology</th>
+              <th>Purpose</th>
+            </tr>
+            <tr>
+              <td>Language</td>
+              <td>Python 3.8+</td>
+              <td>Core application logic</td>
+            </tr>
+            <tr>
+              <td>GUI Framework</td>
+              <td>Tkinter</td>
+              <td>User interface</td>
+            </tr>
+            <tr>
+              <td>Image Processing</td>
+              <td>Pillow (PIL)</td>
+              <td>QR code display and manipulation</td>
+            </tr>
+            <tr>
+              <td>QR Generation</td>
+              <td>qrcode</td>
+              <td>QR code creation</td>
+            </tr>
+            <tr>
+              <td>Clipboard</td>
+              <td>pywin32</td>
+              <td>Copy to clipboard functionality</td>
+            </tr>
+            <tr>
+              <td>Packaging</td>
+              <td>PyInstaller</td>
+              <td>Creating standalone executable</td>
+            </tr>
+          </table>
+
+          <h3>Project Structure</h3>
+          <div class="code-block">qr_code_maker/
+            ├── qrcode_maker.py # Main application file
+            ├── icon.ico # Application icon
+            ├── documentation/
+            │ └── index.html # This documentation
+            ├── dist/ # Executable output folder
+            ├── README.md # Project readme
+            └── requirements.txt # Python dependencies</div>
+
+          <h3>Clone the Repository</h3>
+          <p>Get the latest source code from GitHub:</p>
+          <div class="code-block">git clone https://github.com/shirshadip/qr_code_maker.git</div>
+
+          <p>Or using GitHub CLI:</p>
+          <div class="code-block">gh repo clone shirshadip/qr_code_maker</div>
+
+          <a href="https://github.com/shirshadip/qr_code_maker" target="_blank" class="btn" style="margin-top: 1rem;">🔗
+            View on GitHub</a>
+
+          <h3>Contributing</h3>
           <p>
-            A: Try running the installation command with sudo or check your npm
-            permissions.
+            This is an open-source project! Contributions are welcome. Feel free to:
+          </p>
+          <ul>
+            <li>Report bugs</li>
+            <li>Suggest new features</li>
+            <li>Submit pull requests</li>
+            <li>Improve documentation</li>
+          </ul>
+
+          <h3>Building from Source</h3>
+          <p>To build your own executable:</p>
+          <div class="code-block"># 1. Install dependencies
+            pip install -r requirements.txt
+
+            # 2. Build executable
+            pyinstaller --onefile --windowed --icon=icon.ico qrcode_maker.py
+
+            # 3. Find your executable in the dist/ folder</div>
+
+          <div class="info-box">
+            <strong>📝 License:</strong> This project is open source. Check the repository for
+            license details and usage terms.
+          </div>
+        </section>
+
+        <section id="tips-tricks">
+          <h2>💡 Tips & Best Practices</h2>
+
+          <h3>For Best QR Code Quality</h3>
+          <ul>
+            <li>Always save as PNG format for best quality</li>
+            <li>Keep data concise - shorter URLs are better</li>
+            <li>Test your QR codes before mass printing</li>
+            <li>Ensure good contrast when printing (black on white background)</li>
+            <li>Don't resize saved QR codes too much - regenerate if needed</li>
+          </ul>
+
+          <h3>For UPI Payments</h3>
+          <ul>
+            <li>Double-check UPI ID before generating</li>
+            <li>Test the QR code with your own UPI app first</li>
+            <li>For fixed amounts, specify the amount in the QR code</li>
+            <li>Add descriptive notes to help identify payments</li>
+          </ul>
+
+          <h3>For WhatsApp QR Codes</h3>
+          <ul>
+            <li>Remove spaces and hyphens from phone numbers</li>
+            <li>Use country codes without the '+' symbol</li>
+            <li>Keep pre-filled messages short and clear</li>
+            <li>Test on both Android and iOS devices</li>
+          </ul>
+
+          <h3>Workflow Optimization</h3>
+          <ul>
+            <li>Use keyboard shortcuts for faster generation</li>
+            <li>Keep commonly used details in a text file for copy-paste</li>
+            <li>Create a dedicated folder for your QR codes</li>
+            <li>Name files descriptively (e.g., "business_whatsapp_qr.png")</li>
+          </ul>
+        </section>
+
+        <section id="faq">
+          <h2>❓ Frequently Asked Questions</h2>
+
+          <h4>Is my data safe?</h4>
+          <p>
+            Yes! All processing happens locally on your computer. No data is sent to any external
+            server or cloud service. Your information stays private.
           </p>
 
-          <p><strong>Q: App doesn't start after installation</strong></p>
+          <h4>Do I need internet to use this app?</h4>
           <p>
-            A: Ensure all dependencies are properly installed and your
-            configuration is correct.
-          </p> -->
+            No! The application works completely offline. However, the generated QR codes
+            (for WhatsApp, links, etc.) will need internet when scanned.
+          </p>
+
+          <h4>Can I create custom colored QR codes?</h4>
+          <p>
+            The current version generates standard black and white QR codes, which have the best
+            scanning reliability. Custom colors may be added in future versions.
+          </p>
+
+          <h4>How many QR codes can I generate?</h4>
+          <p>
+            Unlimited! There's no restriction on the number of QR codes you can create.
+          </p>
+
+          <h4>Can I use this for commercial purposes?</h4>
+          <p>
+            Yes! The QR codes you generate can be used for any purpose, including commercial use.
+            Check the project license for software usage terms.
+          </p>
+
+          <h4>Will this work on Mac or Linux?</h4>
+          <p>
+            The source code is cross-platform and should work on Mac and Linux with Python installed.
+            However, the pre-built executable is Windows-only.
+          </p>
         </section>
       </main>
     </div>
 
     <footer>
-      <p>&copy; 2025 shirshadip. All rights reserved.</p>
-      <p>Need help? Contact me at <a href="mailto:shirshadiphere@gmail.com" target="_blank"> this Email Address</a></p>
+      <p>&copy; 2026 shirshadip. All rights reserved.</p>
+      <p>
+        Need help? Contact me at
+        <a href="mailto:shirshadiphere@gmail.com">shirshadiphere@gmail.com</a>
+      </p>
+      <p style="margin-top: 1rem;">
+        <a href="https://github.com/shirshadip/qr_code_maker" target="_blank">
+          🔗 View Source Code on GitHub
+        </a>
+      </p>
     </footer>
   </body>
+
 </html>
