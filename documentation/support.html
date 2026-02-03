@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>QrcodeMakerSupport</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="support.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="header-content">
+                <h1>🔲 QR Code Maker Documentation</h1>
+                <p class="tagline">
+                    Everything you need to create professional QR codes
+                </p>
+            </div>
+        </header>
+        <nav>
+            <div class="nav-content">
+                <a href="#home" onclick="location.href='index.html'" >Home</a>
+                <a href="#support" class="active">Support</a>
+            </div>
+            <h2 style="color: blue;">App support or Feedback</h2>
+            <marquee behavior="scroll" direction="left" > <p style="margin-left: 20px; color: red; font-size: 18px;">
+                Ask for Support or Give us feedbacks to Improve the website,We will contact with you directly 🤗
+            </p></marquee>
+
+            <form id="feedbackForm">
+                <input type="text" id="name" placeholder="Name" required><br><br>
+                <input type="email" id="email" placeholder="Email" required><br><br>
+                <textarea id="feedback" placeholder="Describe your issue or Write a feedback to improve the Application"
+                    required></textarea><br><br>
+                <button type="submit">Submit</button>
+            </form>
+
+            <p id="status"></p>
+
+
+            <script type="module">
+                import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+                const SUPABASE_URL = "https://kdvnrsbkkxchrvkuysif.supabase.co";
+                const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtkdm5yc2Jra3hjaHJ2a3V5c2lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAxMzM4NDQsImV4cCI6MjA4NTcwOTg0NH0.o9eTiPr5WqM-hUaB1AZ-BhCdtKn1Ze9VV4TvLJZECPk"; // keep as-is in your file
+
+                const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+                const form = document.getElementById("feedbackForm");
+                const status = document.getElementById("status");
+
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    // Read form values
+                    const name = document.getElementById("name").value.trim();
+                    const contact = document.getElementById("email").value.trim();
+                    const text = document.getElementById("feedback").value.trim();
+
+                    // Insert into users table
+                    const { error } = await supabase
+                        .from("users")
+                        .insert([
+                            {
+                                name: name,
+                                contact: contact,
+                                text: text
+                            }
+                        ]);
+
+                    if (error) {
+                        console.error(error);
+                        status.textContent = "❌ Error submitting feedback";
+                    } else {
+                        status.textContent = "✅ Feedback submitted successfully!";
+                        form.reset();
+                    }
+                });
+            </script>
+        <hr>
+        <div class="notice">
+            <h2>Notice From Developer 📌</h2>
+            <hr>
+            <ul>
+                <li type="number">
+                    <p style="color: red;">The Copy Feature in the Application is not wroking, we will fix it soon,Thank you!</p>
+                </li>
+            </ul>
+        </div>
+
+            <footer>
+      <p>&copy; 2026 shirshadip. All rights reserved.</p>
+      <p>
+        Need help? Contact me at
+        <a href="mailto:shirshadiphere@gmail.com">shirshadiphere@gmail.com</a>
+      </p>
+      <p style="margin-top: 1rem;">
+        <a href="https://github.com/shirshadip/qr_code_maker" target="_blank">
+          🔗 View Source Code on GitHub
+        </a>
+      </p>
+    </footer>
+    </body>
+
+</html>
