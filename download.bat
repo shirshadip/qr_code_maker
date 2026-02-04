@@ -18,8 +18,7 @@ python -m pip install --upgrade pip
 
 :: Install qrcode and pillow
 echo Installing required packages...
-pip install qrcode[pil]
-pip install pillow
+pip install qrcode[pil] pillow pywin32
 
 echo -----------------------------------------
 echo Installation complete!
