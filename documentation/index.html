@@ -23,7 +23,7 @@
       <div class="nav-content">
         <a href="#home" class="active">Home</a>
         <a href="#support" onclick="location.href='support.html'">Support</a>
-      
+
       </div>
     </nav>
 
@@ -562,7 +562,9 @@
           </table>
 
           <h3>Project Structure</h3>
-          <div class="code-block">qr_code_maker/
+          <div class="code-block">
+            <pre>
+              qr_code_maker/
             ├── .git/
             ├── .github/
             ├── .gitignore
@@ -572,7 +574,11 @@
             ├── CHANGELOG.md
             ├── documentation/
             │ ├── index.css
-            │ └── README.md
+            │ |── README.md
+            | ├── index.html
+            | |── support.html
+            | |── support.css 
+            | └── logo.png 
             ├── gui_app/
             │ └── qrcode maker.py
             ├── cui_app/
@@ -581,11 +587,13 @@
             ├── build/
             ├── icon.ico
             ├── logo.png
-            ├── index.html
+            
             ├── main.py
             ├── main.spec
             ├── QrcodeMaker.spec
-            └── __pycache__/</div>
+            └── __pycache__/
+            </pre>
+          </div>
 
           <h3>Clone the Repository</h3>
           <p>Get the latest source code from GitHub:</p>
@@ -610,13 +618,17 @@
 
           <h3>Building from Source</h3>
           <p>To build your own executable:</p>
-          <div class="code-block"># 1. Install dependencies
+          <div class="code-block">
+            <pre>
+            # 1. Install dependencies
             pip install -r requirements.txt
 
             # 2. Build executable
             pyinstaller --onefile --windowed --icon=icon.ico qrcode_maker.py
 
-            # 3. Find your executable in the dist/ folder</div>
+            # 3. Find your executable in the dist/ folder
+            </pre>
+          </div>
 
           <div class="info-box">
             <strong>📝 License:</strong> This project is open source. Check the repository for
