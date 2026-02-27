@@ -1,0 +1,6 @@
+Pillow>=9.0
+qrcode>=7.3
+pywin32; sys_platform == "win32"
+
+# Optional build tool (used in project README/header):
+pyinstaller

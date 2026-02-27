@@ -4,13 +4,13 @@ Build command: pyinstaller --onefile --windowed --icon=icon.ico --name QrcodeMak
 pyinstaller --onefile --windowed --icon=icon.ico --add-data "icon.ico;." --add-data "logo.png;." --name QrcodeMaker main.py
 """
 
-import os
-import sys
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 from PIL import Image, ImageTk
 import qrcode
+from qrcode import constants
 from io import BytesIO
+from pathlib import Path
 
 
 class QRCodeMakerApp:
@@ -399,7 +399,7 @@ class QRCodeMakerApp:
             # Generate QR Code
             qr = qrcode.QRCode(
                 version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_H,
+                error_correction=constants.ERROR_CORRECT_H,
                 box_size=10,
                 border=4,
             )
@@ -420,13 +420,7 @@ class QRCodeMakerApp:
         if self.qr_pil_image:
             # Resize for display
             display_size = (350, 350)
-            # Backwards-compatible resampling attribute
-            try:
-                resample_filter = Image.Resampling.LANCZOS
-            except Exception:
-                resample_filter = Image.LANCZOS
-
-            img_resized = self.qr_pil_image.resize(display_size, resample_filter)
+            img_resized = self.qr_pil_image.resize(display_size, Image.Resampling.LANCZOS)
 
             # Convert to PhotoImage
             self.qr_image = ImageTk.PhotoImage(img_resized)
@@ -448,7 +442,7 @@ class QRCodeMakerApp:
 
         if file_path:
             try:
-                self.qr_pil_image.save(file_path)
+                self.qr_pil_image.save(Path(file_path))
                 messagebox.showinfo("Success", f"QR code saved successfully!\n{file_path}")
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to save QR code:\n{str(e)}")
@@ -466,13 +460,12 @@ class QRCodeMakerApp:
         try:
             # Save to BytesIO
             output = BytesIO()
-            self.qr_pil_image.save(output, format='PNG')
+            self.qr_pil_image.save(output, 'PNG')
             data = output.getvalue()
             output.close()
 
             # Copy to clipboard (Windows)
             import win32clipboard
-            from io import BytesIO
 
             def send_to_clipboard(clip_type, data):
                 win32clipboard.OpenClipboard()
@@ -483,8 +476,9 @@ class QRCodeMakerApp:
             # Save to temp file and copy
             import tempfile
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
-            self.qr_pil_image.save(temp_file.name)
             temp_file.close()
+            with open(temp_file.name, 'wb') as f:
+                self.qr_pil_image.save(f, 'PNG')
 
             messagebox.showinfo("Success", "QR code copied to clipboard!")
         except ImportError:
@@ -581,47 +575,8 @@ Made with ❤️
 def main():
     root = tk.Tk()
     app = QRCodeMakerApp(root)
-    # Ensure icon is shown in titlebar and taskbar (generate .ico if missing)
-    def ensure_app_icon(win):
-        # When running from a PyInstaller bundle, resources are extracted to _MEIPASS
-        base_dir = getattr(sys, '_MEIPASS', os.path.dirname(__file__))
-        png_path = os.path.join(base_dir, "logo.png")
-        ico_path = os.path.join(base_dir, "icon.ico")
-
-        try:
-            # If .ico missing but logo.png exists, create a multi-size ICO
-            if not os.path.exists(ico_path) and os.path.exists(png_path):
-                try:
-                    img = Image.open(png_path)
-                    sizes = [(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)]
-                    img.save(ico_path, format='ICO', sizes=sizes)
-                except Exception:
-                    # ignore failures to auto-generate
-                    pass
-
-            # Set the Tk titlebar icon from PNG (keeps image in memory)
-            if os.path.exists(png_path):
-                try:
-                    photo = tk.PhotoImage(file=png_path)
-                    win.iconphoto(True, photo)
-                    # keep reference to avoid GC
-                    win._icon_photo = photo
-                except Exception:
-                    pass
-
-            # On Windows also set iconbitmap to the .ico (helps taskbar for packaged exe)
-            if os.name == 'nt' and os.path.exists(ico_path):
-                try:
-                    win.iconbitmap(ico_path)
-                except Exception:
-                    pass
-        except Exception:
-            pass
-
-    ensure_app_icon(root)
     root.mainloop()
-    
-    
+
 
 if __name__ == "__main__":
     main()

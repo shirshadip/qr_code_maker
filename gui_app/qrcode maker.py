@@ -7,7 +7,9 @@ import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 from PIL import Image, ImageTk
 import qrcode
+from qrcode import constants
 from io import BytesIO
+from pathlib import Path
 
 
 class QRCodeMakerApp:
@@ -396,7 +398,7 @@ class QRCodeMakerApp:
             # Generate QR Code
             qr = qrcode.QRCode(
                 version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_H,
+                error_correction=constants.ERROR_CORRECT_H,
                 box_size=10,
                 border=4,
             )
@@ -439,7 +441,7 @@ class QRCodeMakerApp:
 
         if file_path:
             try:
-                self.qr_pil_image.save(file_path)
+                self.qr_pil_image.save(Path(file_path))
                 messagebox.showinfo("Success", f"QR code saved successfully!\n{file_path}")
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to save QR code:\n{str(e)}")
@@ -457,13 +459,12 @@ class QRCodeMakerApp:
         try:
             # Save to BytesIO
             output = BytesIO()
-            self.qr_pil_image.save(output, format='PNG')
+            self.qr_pil_image.save(output, 'PNG')
             data = output.getvalue()
             output.close()
 
             # Copy to clipboard (Windows)
             import win32clipboard
-            from io import BytesIO
 
             def send_to_clipboard(clip_type, data):
                 win32clipboard.OpenClipboard()
@@ -474,8 +475,9 @@ class QRCodeMakerApp:
             # Save to temp file and copy
             import tempfile
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
-            self.qr_pil_image.save(temp_file.name)
             temp_file.close()
+            with open(temp_file.name, 'wb') as f:
+                self.qr_pil_image.save(f, 'PNG')
 
             messagebox.showinfo("Success", "QR code copied to clipboard!")
         except ImportError:
